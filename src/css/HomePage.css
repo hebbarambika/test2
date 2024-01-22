@@ -1,0 +1,222 @@
+/*HomePage.css*/
+/* body{
+  background-image: url('../assets/b2.jpg'); 
+} */
+.Headder {
+    display: flex; 
+    padding-top: 1pc;
+    padding-bottom: 1pc;
+    padding-left: 5px ;
+    /* padding-right: 10px ; */
+    height: 150px;
+    align-items: center;
+    background-color:rgb(8, 58, 116) ;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; 
+    color: white;
+   
+    
+    } 
+    
+    .l1 {
+      
+      border-radius: 10px; /* Adjust the radius as needed */
+      border: 3px solid #050505; /* Specify the border color using a hex code */
+      /* opacity: 0.5; */
+      /* border-radius: 50pc; */
+      justify-content: left;
+      height: 8pc;
+      width: 8pc;/* Adjust as needed */
+      /* margin-left: 10px; */
+      
+    }
+    .l2{
+      /* border-radius: 10px;  */
+      border: 3px solid #f7f1f1;
+      /* opacity: 0.5; */
+      border-radius: 50pc;
+      justify-content: right;
+      height: 8pc;
+      width: 8pc;
+      margin-right: 10px;
+      
+    }
+    .college-name{
+      padding-top: 5pc;
+      padding-bottom: 5pc;
+      
+      justify-content: center;
+      align-items: center;
+      text-align: center; 
+      height:max-content;
+      
+      
+    }
+    .options-container{
+      overflow-y: auto;
+    margin-top: 10px;
+    padding-top: 20px;
+    background-color: rgb(9, 3, 90);
+    width: 15pc;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: column;
+    height: -moz-fit-content;
+    height: fit-content;
+    align-items: center;
+    }
+    /* .fixed-text{
+      color: white;
+      
+      margin-bottom: 5px;
+    border: 2px solid #0c0000;
+    padding-bottom: 5px;
+    position: fixed;
+    top: 200px;
+    width: 18%;
+    opacity: 0.7;
+    z-index: 999;
+    background-color: rgb(6, 21, 105);
+    height: -moz-fit-content;
+    height: fit-content;
+    justify-content: center;
+
+    } */
+    .club{
+      width: 12pc;
+      border-radius: 10px;
+      top: 190px;
+      /* padding-top: 10px; */
+      margin-top: 50px;
+      overflow-y: auto;
+      padding-bottom: 5px;
+      height: 40px;
+      flex: 1 1;
+      margin: 5px;
+      box-sizing: border-box;
+      background-color: rgb(160, 233, 243);
+      border: 4px solid white;
+      text-align: center;
+    }
+    .club:hover {
+      background-color:rgb(9, 3, 90); /* Change the background color as needed */
+      cursor: pointer;
+      transform: scale(1.2);
+      transition: transform 0.5s ease;
+      color: #fff;
+
+    }
+    
+    .club-link:hover h3 {
+      color: #fff; /* Change the text color when hovered */
+      /* transform: scale(1); 
+      transition: transform 0.5s ease; */
+    }
+    
+
+.main-container {
+  display: flex;
+  justify-content: space-between;
+  /* margin-top: 10px; */
+  padding-top: 20px;
+}
+
+.additional-div {
+  margin-top: 180px;
+  display: flex;
+  justify-content: center;
+  width: calc(90% - 12pc);
+  background-color: rgb(12, 2, 2);
+  padding: 20px;
+  box-sizing: border-box;
+  justify-content: space-between;
+  height: 13pc;
+}
+.comp1 {
+  width: calc(90% - 15pc);
+  background-color: rgb(251, 252, 250);
+  padding: 20px;
+  box-sizing: border-box;
+  height: 10pc;
+  justify-content: center;
+  /* margin-left: 20px; */
+}
+.comp2{
+  width: calc(90% - 15pc);
+    background-color: rgb(251, 252, 250);
+    padding: 20px;
+    box-sizing: border-box;
+    height: 10pc;
+    text-align: center;
+    margin-left: 20px;
+}
+.comp3{
+  width: calc(90% - 15pc);
+    background-color: rgb(251, 252, 250);
+    padding: 20px;
+    box-sizing: border-box;
+    height: 10pc;
+    text-align: center;
+    margin-left: 20px;
+}
+/* Add the following CSS styles to your existing stylesheet or create a new one */
+
+.auth-buttons {
+  padding: 1pc;
+  display: flex;
+  justify-content: flex-end;
+  
+  margin-top: 190px; 
+  
+  height: 5pc;
+  width:100;
+  background-color: rgb(9, 3, 90);;
+  /* margin-bottom: 20px; */
+  /* position: fixed; */
+
+  
+}
+.auth-buttons h3{
+  justify-content:start;
+  color: white;
+  /* padding-bottom: 10px; */
+}
+
+.button {
+  box-sizing: border-box;
+  cursor: pointer;
+  margin-left: 20px; /* Add space between buttons */
+  margin-right: 20px 20px  0px  20px;
+  padding: 10px;
+  background-color: #66e7dc; /* Adjust button color as needed */
+  color: #fff;
+  /* border: 1pc; */
+  border-radius: 5px;
+  /* cursor: pointer; */
+  /* height: 2pc;
+  width: 5pc; */
+  /* font-size: 15px; */
+  border-color: white;
+  align-items: center;
+  height: 77px;
+  width: 77px;
+}
+.image-slider {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Adjust the number of columns as needed */
+  gap: 16px; /* Adjust the gap between images */
+  margin-top: 20px; /* Add margin to separate images from additional-div */
+}
+
+.image-slider img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px; /* Optional: Add border-radius for rounded corners */
+}
+.image-container{
+  background-image: url('../assets/b2.jpg');
+}
+    
