@@ -15,17 +15,17 @@ app.get("/",cors(),(req,res)=>{
 
 
 app.post("/Signup",async(req,res)=>{
-        const{educationLevel,username,fullName,email,year,course,contactNumber,club,password}=req.body
+        const{userType,username,name,email,sem,contactNumber,clubName,course,password}=req.body
     
         const data={
-            educationLevel:educationLevel,
+            userType:userType,
             username:username,
-            fullName:fullName,
-            email:email,   
-            year:year,
-            course:course,
+            name:name,
+            email:email,
+            sem:sem,
             contactNumber:contactNumber,
-            club:club,
+            clubName:clubName,
+            course:course,
             password:password,
     
         }
