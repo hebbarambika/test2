@@ -1,0 +1,35 @@
+.event-list-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .event-category {
+    margin-bottom: 20px;
+  }
+  
+  .category-title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .event-item {
+    margin-top: 10px;
+  }
+  
+  .event-name {
+    font-weight: bold;
+  }
+  
+  .event-index {
+    color: #666;
+  }
+  
+  .more-button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    cursor: pointer;
+  }
+  

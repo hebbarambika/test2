@@ -23,50 +23,50 @@ const adminSchema=new mongoose.Schema({
     
     });
     
-    const admin = mongoose.model('admin', adminSchema);
+    const admins = mongoose.model('admin', adminSchema);
     
-    const newSchema=new mongoose.Schema({
-        educationLevel:{
-            type:String,
-            required:true
-    
-        },
-        
-        username:{
-            type:String,
-            required:true,
-            unique: true,
-        },
-        fullName:{
-            type:String,
-            required:true
-        },
-        email:{
-            type:String,
-            required:false
-        },
-       
-        year:{
-            type:Number,
-            required:true
-        },
-        course:{
-            type:String,
-            required:true
-        },
-        contactNumber:{
-            type:Number,
-            required:false
-        },
-        club: {
-            type: String, // Change the data type based on your requirements
-            required: true,
-          },
-        password:{
-            type:String,
-            required:true
-        },
-    });
+
+const newSchema = new mongoose.Schema({
+    userType: {
+        type: String,
+        required: true
+    },
+    username: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    name: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: false
+    },
+    sem: {
+        type: Number,
+        required: true
+    },
+    contactNumber: {
+        type: Number,
+        required: false
+    },
+    clubName: {
+        type: String,
+        required: true
+    },
+    course: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
+    }
+});
+
+
     const users = mongoose.model("users", newSchema);
     
     const eventSchema = new mongoose.Schema({
@@ -79,9 +79,11 @@ const adminSchema=new mongoose.Schema({
         enrollmentLastDate: { type: Date, required: true },
         eventDescription: { type: String, required: true },
         eventRules: { type: String, required: true },
+        createdBy:{type: String, required: true },
+        club:{type: String, required: true },
       });
       
-      const event = mongoose.model('event', eventSchema);
+      const events = mongoose.model('events', eventSchema);
       
     
     // // // const clubSchema = new mongoose.Schema({
@@ -102,4 +104,4 @@ const adminSchema=new mongoose.Schema({
      
     //   // const Club = mongoose.model("Club", clubSchema);
 
-module.exports={users,admin,event};
+module.exports={users,admins,events};

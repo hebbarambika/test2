@@ -1,13 +1,15 @@
 // AddEventPage.js
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react";
 import { useNavigate,Link } from 'react-router-dom';
-import axios from "axios"
+import axios from "axios";
+import { useAdminContext } from '../context/AdminContext';
 import '../css/AddEventPage.css'; 
 
 function AddEventPage() {
   // Add useState for each form field
   const EventType = ['Inter Club Event', 'Intra Club Event'];
   const history=useNavigate();
+  const { adminInfo } = useAdminContext();
   const [eventType,setEventType]=useState('');
   // const [eventId, setEventId] = useState('');
   const [eventName, setEventName] = useState('');
@@ -17,13 +19,24 @@ function AddEventPage() {
   const [enrollmentLastDate, setEnrollmentLastDate] = useState('');
   const [eventDescription, setEventDescription] = useState('');
   const [eventRules, setEventRules] = useState('');
+  const [createdBy, setCreatedBy] = useState(''); // Declare createdBy state
+  const [club, setClub] = useState(''); // Declare club state
+  //const { adminId, club } = adminInfo || {};
+
+
+  useEffect(() => {
+    if (adminInfo) {
+      setCreatedBy(adminInfo.adminId);
+      setClub(adminInfo.club);
+    }
+  }, [adminInfo]);
 
   async function eventSubmit(e){
     e.preventDefault();
     try{
 
         await axios.post("http://localhost:3000/addevent",{
-          eventType,eventName,eventDate,eventVenue,eventTime,enrollmentLastDate,eventDescription,eventRules,
+          eventType,eventName,eventDate,eventVenue,eventTime,enrollmentLastDate,eventDescription,eventRules,createdBy,club
         })
         .then(res=>{
             if(res.data=="exist"){
@@ -63,37 +76,25 @@ function AddEventPage() {
     <div className='addevent-container'>
       <h2 className='addevent-text'>Add Event</h2>
       <form action="POST" className='addevent-form' >
-      <div className="form-content">
-                    <label htmlFor="eventtype">Event Type:</label>
-                    <div className="radio-group">
-                        {/* <label>
-                        <input
-                            type="radio"
-                            value="InterClubEvent"
-                            onChange={() => setEventType("InterClubEvent")}
-                            checked={EventType === "InterClubEvent"}
-                            required
-                            // id="educationLevel"
-                        />InterClubEvent
-                        </label> */}
-                        {
-                          EventType.map( event => {
-                            console.log('event ====>',event)
-                           return <label>
-                        <input
-                            type="radio"
-                            value={event}
-                            onChange={() => setEventType({event})}
-                            checked={EventType === event}
-                            required
-                            // id="educationLevel"
-                        />
-                        {event}
-                        </label>
-                          })
-                        }
-                    </div>
-                </div>
+        <div className="form-content">
+          <label htmlFor="eventtype">Event Type:</label>
+            <div className="radio-group">
+                        {EventType.map(event => (
+                          <label key={event}>
+                            <input
+                              type="radio"
+                              value={event}
+                              onChange={() => setEventType(event)}
+                              checked={eventType === event}
+                              required
+                            />
+                            {event}
+                          </label>
+                        ))}
+            </div>
+        </div>
+
+                
   
         <div className='form-content'>
           <label className="lbl" htmlFor='eventName'>Event Name:</label>

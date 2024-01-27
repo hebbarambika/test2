@@ -17,12 +17,7 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        {/* <Route path="/" element={<HomePage/>} /> */}
-        {/* <Route
-          path="/"
-          element={<HomePage isUserLoggedIn={isUserLoggedIn} />}
-        /> */}
-        {/* <Route path="/login" element={<LoginPage/>} /> */}
+       
         <Route
           path="/login"
           element={<LoginPage setIsUserLoggedIn={setIsUserLoggedIn} />}

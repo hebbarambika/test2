@@ -1,16 +1,17 @@
-// LoginPage.js
+// AdminLoginPage.js
 import React, { useEffect, useState } from "react"
 import axios from "axios"
 import { useNavigate, Link } from "react-router-dom"
-// import React from 'react';
+import { useAdminContext } from '../context/AdminContext'
 import '../css/LoginPage.css';
 
 const AdminLogin = ({ setIsAdminLoggedIn }) => {
-  const history=useNavigate();
+    const history=useNavigate();
+    const { setAdmin } = useAdminContext();
 
     const [adminId,setAdminname]=useState('')
     const [password,setPassword]=useState('')
-    const [club,setClubname]=useState('')
+    // const [club,setClubname]=useState('')
 
     async function submit(e){
         e.preventDefault();
@@ -18,27 +19,28 @@ const AdminLogin = ({ setIsAdminLoggedIn }) => {
         try{
 
             await axios.post("http://localhost:3000/adminlogin",{
-                adminId,password,club,
+                adminId,password,
             })
-            .then(res=>{
-                console.log('Data=====>',res)
-                if(res.data!="match"){
-                    // const adminid=res.data;
-                    // console.log('admin id===>',adminid)
+            .then(res => {
+                console.log('Data=====>', res);
+                if (res.data.status === "match") {
+                    // Successful login
                     setIsAdminLoggedIn(true);
-                    history("/admin")
-                }
-                else if(res.data=="doesnotmatch"){
-                    alert("Incorrect Password or club")
-                }
-                else if(res.data=="notexist"){
-                    alert("Wrong Admin name/You are not admin")
+                    setAdmin(res.data.admin);
+                    history("/admin");
+                } else if (res.data.status === "doesnotmatch") {
+                    // Unauthorized: Incorrect Password or club
+                    alert("Incorrect Password");
+                } else if (res.data.status === "notexist") {
+                    // Not Found: Wrong Admin name/You are not admin
+                    alert("Wrong Admin name/You are not admin");
                 }
             })
-            .catch(e=>{
-                alert("wrong details")
+            .catch(e => {
+                // Internal Server Error or other unexpected errors
+                alert("Wrong details");
                 console.log(e);
-            })
+            });
 
         }
         catch(e){
@@ -57,7 +59,7 @@ const AdminLogin = ({ setIsAdminLoggedIn }) => {
                 <label htmlFor="password">Password :</label>
                 <input type="password"  id="password" onChange={(e) => { setPassword(e.target.value) }} placeholder="Password" autoComplete="new-password"  />
                 <br></br>
-                <div className="form-group">
+                {/* <div className="form-group">
                     <label htmlFor="club">ClubName:</label>
                     <select onChange={(e) => setClubname(e.target.value)}
                      value={club}
@@ -79,7 +81,7 @@ const AdminLogin = ({ setIsAdminLoggedIn }) => {
                     <option value="RangerRovers">RangerRovers</option>
                     <option value="MSc" > M.Sc</option>
                     </select>
-                </div>
+                </div> */}
 
                 <br></br>
                 <input className="submit-button1" type="submit" onClick={submit} />
