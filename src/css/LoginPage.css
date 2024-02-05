@@ -1,34 +1,68 @@
-/*LoginPage.css*/
+/* LoginPage.css */
 .login-container {
-    border-radius: 10px;
-    background-color: rgb(11 219 82 / 52%);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 500px;
-    height: 500px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2pc;
-  }
-  .submit-button1{
-    margin-top: 2px;
-  margin-left: 45px;
   border-radius: 10px;
-  width: 10pc;
-  height: 2pc;
-  background-color: green;
-  cursor:pointer;
-  }
+  background-color: #61b3d456;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   
-  .login-text {
-    font-size: 50px;
-  }
+}
+.login-container input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.7); /* Adjusted alpha value for transparency */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}  
+.login-container .submit-button1 {
+  margin-top: 20px;
+  margin-left: 45px;
+  border-radius: 5px;
+  width: 50%;
+  height: 40px;
+  background-color: #2e7d32;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.login-text {
+  font-size: 36px;
   
-  .form-content {
-    font-size: 20px; 
-    margin-bottom: 10px;
+  margin-bottom: 20px;
+  color: rgb(17, 17, 17);
+}
+
+.form-content {
+  font-size: 18px;
+  margin-bottom: 20px; /* Increased margin for better spacing */
+  color: #212121;
+  width: 80%; /* Adjusted width for better responsiveness */
+}
+
+.signup-link {
+  color: #1565C0;
+  text-decoration: none;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.signup-link:hover {
+  text-decoration: underline;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: url('C:\ambika\React(mini project)\test2\src\assets\logo.jpg') no-repeat center center fixed;
+  background-size: cover;
 }

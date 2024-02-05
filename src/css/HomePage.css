@@ -28,6 +28,8 @@
       /* border-radius: 50pc; */
       justify-content: left;
       height: 8pc;
+      margin-left: 2%;
+      margin-right: 8%;
       width: 8pc;/* Adjust as needed */
       /* margin-left: 10px; */
       
@@ -39,21 +41,29 @@
       border-radius: 50pc;
       justify-content: right;
       height: 8pc;
+      text-align: center;
       width: 8pc;
-      margin-right: 10px;
-      
+      margin-right: 0px;
+      margin-left: 60px;
     }
-    .college-name{
-      padding-top: 5pc;
-      padding-bottom: 5pc;
-      
-      justify-content: center;
-      align-items: center;
-      text-align: center; 
-      height:max-content;
-      
-      
+    .college-name {
+      text-align: center;
+      font-size: 40px; /* Set the font size for the college name */
+      font-weight: bold; /* Optional: Add bold style */
+      /* Add any other styles you want */
     }
+    .college-info-container {
+      overflow: hidden; /* Ensure that the moving text doesn't overflow */
+    }
+    
+    .college-description {
+      font-size: 20px; /* Set the font size for the college description */
+      /* Add any other styles you want */
+      white-space: nowrap; /* Prevent text from wrapping to the next line */
+      text-align: center;
+      animation: slideRight 8s linear infinite;
+    }
+    
     .options-container{
       overflow-y: auto;
     margin-top: 10px;
@@ -170,8 +180,8 @@
   justify-content: flex-end;
   
   margin-top: 190px; 
-  
-  height: 5pc;
+  color: #f7f1f1;
+  height: 3pc;
   width:100;
   background-color: rgb(9, 3, 90);;
   /* margin-bottom: 20px; */
@@ -181,7 +191,7 @@
 }
 .auth-buttons h3{
   justify-content:start;
-  color: white;
+  color: rgb(19, 18, 18);
   /* padding-bottom: 10px; */
 }
 
@@ -195,14 +205,16 @@
   color: #fff;
   /* border: 1pc; */
   border-radius: 5px;
+  font-size:50%;
   /* cursor: pointer; */
   /* height: 2pc;
   width: 5pc; */
   /* font-size: 15px; */
   border-color: white;
   align-items: center;
-  height: 77px;
-  width: 77px;
+  height: 44px;
+  width: 44px;
+  margin-top: 2px;
 }
 .image-slider {
   display: grid;
@@ -219,4 +231,11 @@
 .image-container{
   background-image: url('../assets/b2.jpg');
 }
-    
+@keyframes slideRight {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%); /* Adjust the distance to which you want the text to move */
+  }
+}

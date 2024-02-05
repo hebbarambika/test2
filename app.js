@@ -50,9 +50,9 @@ app.post("/Signup",async(req,res)=>{
                 else{
                     const test = await users.insertMany([data])
                     console.log("test=======>",test)
-                    const token = await createToken(test[0]._id)
-                    // res.json("notexist")
-                    res.status(200).json({test,token})
+                    const token = createToken(test[0]._id)
+                    res.json("notexist")
+                    // res.status(200).json({test,token})
                    
                 }
                
@@ -70,22 +70,25 @@ app.post("/login",async(req,res)=>{
             const user=await users.findOne({username:username})
     
             if (user) {
-                // Check if the provided password matches the stored password
-                if (user.password === password) {
-                    // Passwords match, return "exist"
-                    res.json("match");
-                } else if(user.password!=password) {
+                 const match = await bcrypt.compare(password, user.password)
+                 if (match) {
+                         const token = createToken(user._id)
+                         res.status(200).json({ status: "match", user: user,token: token});
+                        //  res.status("match").json({user,token});
+                        }
+                else{
                     // Passwords don't match, return "notexist"
-                    res.json("doesnotmatch");
+                    res.status(401).json({ status: "doesnotmatch" });
                 }
             } 
             else{
-                res.json("notexist")
+                res.status(404).json({ status: "notexist" });
             }
     
         }
         catch(e){
-            res.json("fail")
+            console.error(e);
+            res.status(500).json({ status: "fail" });
         }
     
     })
@@ -156,7 +159,7 @@ app.post("/addevent",async(req,res)=>{
     
     });
 
-    app.get('/getevents', async (req, res) => {
+app.get('/getevents', async (req, res) => {
         const { adminId, club } = req.query; // Use req.query to access query parameters
     
         try {
@@ -179,10 +182,23 @@ app.post("/addevent",async(req,res)=>{
         }
     });
     
+    app.get('/viewmembers', async (req, res) => {
+        const { club } = req.query; // Get the club from query parameters
+        
+        try {
+            // Assuming you have a "users" collection to store user data
+            const members = await users.find({ clubName: club }); // Find users where clubName matches the admin's club
+            res.json(members);
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ error: 'Internal Server Error' });
+        }
+    });
+    
     
       
     
-    app.listen(3000,()=>{
+app.listen(3000,()=>{
         console.log("port connected");
         console.log("test====>",process.env.SECRET)
     });

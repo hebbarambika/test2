@@ -1,7 +1,4 @@
 //ClubInfoSlider.js
-
-
-
 import React, { useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';

@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faPlus } from '@fortawesome/free-solid-svg-icons';
-//import './AdminPage.css';
+import '../css/AdminPage.css';;
 
 const AdminPage = () => {
   return (
@@ -27,7 +27,7 @@ const AdminPage = () => {
       <div className="box">
         <h2>View Members</h2>
         <div className="arrow-container">
-          <Link to="/view-members" className="link-button">
+          <Link to="/viewmembers" className="link-button">
             <FontAwesomeIcon icon={faChevronDown} className="arrow" />
           </Link>
         </div>

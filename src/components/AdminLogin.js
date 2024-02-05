@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react"
 import axios from "axios"
 import { useNavigate, Link } from "react-router-dom"
 import { useAdminContext } from '../context/AdminContext'
-import '../css/LoginPage.css';
+import '../css/AdminLogin.css';
 
 const AdminLogin = ({ setIsAdminLoggedIn }) => {
     const history=useNavigate();
@@ -54,41 +54,19 @@ const AdminLogin = ({ setIsAdminLoggedIn }) => {
         <h2 className="login-text">Admin Login</h2>
         <form action="POST">
                 <label htmlFor="Adminname">AdminId:</label>
+                <br/>
                 <input type="Adminname"  id="Adminname"  onChange={(e) => { setAdminname(e.target.value) }} placeholder="AdminId"  />
                 <br></br>
                 <label htmlFor="password">Password :</label>
+                <br/>
                 <input type="password"  id="password" onChange={(e) => { setPassword(e.target.value) }} placeholder="Password" autoComplete="new-password"  />
                 <br></br>
-                {/* <div className="form-group">
-                    <label htmlFor="club">ClubName:</label>
-                    <select onChange={(e) => setClubname(e.target.value)}
-                     value={club}
-                     required
-                     id="club"
-                    >
-                    <option value="" disabled>
-                        Select Club
-                    </option>
-                    <option value="Arts Club">Arts Club</option>
-                    <option value="NSS">NSS</option>
-                    <option value="RedCross">Red Cross</option>
-                    <option value="ITClub">IT Club</option>
-                    <option value="ScienceClub">Science Club</option>
-                    <option value="CommerceClub">Commerce Club</option>
-                    <option value="NCCNavy">NCC Navy</option>
-                    <option value="NCCArmy">NCC Army</option>
-                    <option value="EcoClub">Eco Club</option>
-                    <option value="RangerRovers">RangerRovers</option>
-                    <option value="MSc" > M.Sc</option>
-                    </select>
-                </div> */}
-
-                <br></br>
-                <input className="submit-button1" type="submit" onClick={submit} />
+                
+                
+                <input className="submit-button2" type="submit" onClick={submit} />
       </form>
 
-            
-     </div>
+    </div>
     );
 };
 

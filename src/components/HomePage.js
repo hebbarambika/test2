@@ -40,22 +40,21 @@ const HomePage = ({ isUserLoggedIn }) => {
 
   return (
     <div>
-          <div className='Headder'> 
-              <img className='l1' src={i1} alt="College Logo" />
-              <h1 className='college-name'>
-              {collegeName}
-              <br /> {/* Correct syntax for multiline string */}
-              {collegeInfo}
-              </h1>
-              <img className='l2' src={i2} alt="College Logo" />
-          </div>
+    <div className='Headder'>
+      <img className='l1' src={i1} alt="College Logo" />
+      <div className='college-info-container'>
+        <h1 className='college-name'>{collegeName}</h1>
+        <p className='college-description'>{collegeInfo}</p>
+      </div>
+      <img className='l2' src={i2} alt="College Logo" />
+    </div>
           {/* <div className='auth-buttons'>
             <button onClick={() => history("/login")}>Login</button>
             <button onClick={() => history("/Signup")}>Signup</button>
             <button onClick={() => history("/admin-login")}>Admin Login</button>
         </div> */}
           <div className='auth-buttons'>
-            <h3>HOME</h3>
+            <h5>HOME</h5>
             <div className='button' onClick={handleLoginClick}><h3>Login</h3></div>
             <div className='button' onClick={handleSignupClick}><h3>SignUp</h3></div>
             <div className='button' onClick={() => history("/adminlogin")}><h3>Admin Login</h3></div>

@@ -48,9 +48,8 @@ function Login({ setIsUserLoggedIn }) {
                     alert("User already exists")
                 }
                 else if(res.data=="notexist"){
-                    // history("/home",{state:{id:email}})
-                    setIsUserLoggedIn(true);
                     alert("Signup successful");
+                    setIsUserLoggedIn(true);
                     history("/")
                 }
                 // else if(res.data=="notallowed"){
@@ -85,8 +84,8 @@ function Login({ setIsUserLoggedIn }) {
     
       // Helper function to generate club options based on user type
       const generateClubOptions = () => {
-        const ugClubs = ['IT', 'NSS', 'NCC NAVY', 'NCC ARMY', 'ROVER-RANGERS', 'ART', 'RED-CROSS', 'SCIENCE', 'COMMERCE'];
-        const pgClubs = ['MSC'];
+        const ugClubs = ["Arts Club", "NSS", "Red Cross", "IT Club", "Science Club", "Commerce Club", "NCC Navy", "NCC Army", "Eco Club", "RangerRovers"];
+        const pgClubs = ["M.Sc"];
         const options = userType === 'ug' ? ugClubs : pgClubs;
         return options.map((club) => (
           <option key={club} value={club}>

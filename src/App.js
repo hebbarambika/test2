@@ -10,6 +10,8 @@ import AddEventPage from "./components/AddEventPage";
 import AdminLogin from "./components/AdminLogin";
 import AdminPage from "./components/AdminPage";
 import EventListPage from "./components/EventList";
+import ViewMembers from "./components/ViewMembers";
+import ForgotPassword from "./components/ForgotPassword";
 // import { Router ,Route } from 'react-router-dom';
 const App = () => {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
@@ -33,7 +35,9 @@ const App = () => {
         <Route path="/" element={<HomePage isUserLoggedIn={isUserLoggedIn} setIsAdminLoggedIn={setIsAdminLoggedIn}  />} />
         <Route path='/addevent' element={<AddEventPage/>}/>
         <Route path='/getevent' element={<EventListPage/>}/>
+        <Route path='/viewmembers' element={<ViewMembers/>}/>
         <Route path='/admin' element={<AdminPage/>}/>
+        <Route path='/forgot' element={<ForgotPassword/>}/>
         <Route path='/adminlogin' element={<AdminLogin setIsAdminLoggedIn={setIsAdminLoggedIn}/>}/>
         
           

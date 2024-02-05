@@ -1,66 +1,70 @@
 // LoginPage.js
-import React, { useEffect, useState } from "react"
-import axios from "axios"
-import { useNavigate, Link } from "react-router-dom"
-// import React from 'react';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useNavigate, Link } from "react-router-dom";
 import '../css/LoginPage.css';
 
 const LoginPage = ({ setIsUserLoggedIn }) => {
-  const history=useNavigate();
+  const history = useNavigate();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-    const [username,setUsername]=useState('')
-    const [password,setPassword]=useState('')
+  async function submit(e) {
+    e.preventDefault();
 
-    async function submit(e){
-        e.preventDefault();
+    try {
+      const res = await axios.post("http://localhost:3000/login", {
+        username,
+        password
+      });
 
-        try{
-
-            await axios.post("http://localhost:3000/login",{
-                username,password
-            })
-            .then(res=>{
-                if(res.data=="match"){
-                    setIsUserLoggedIn(true);
-                    history("/",{state:{id:username}})
-                }
-                else if(res.data=="doesnotmatch"){
-                    alert("Enter correct Password")
-                }
-                else if(res.data=="notexist"){
-                    alert("User have not sign up")
-                }
-            })
-            .catch(e=>{
-                alert("wrong details")
-                console.log(e);
-            })
-
-        }
-        catch(e){
-            console.log(e);
-
-        }
-
+      if (res.data.status === "match") {
+        setIsUserLoggedIn(true);
+        alert("Login Successful");
+        history("/", { state: { id: username } });
+      } else if (res.data.status === "doesnotmatch") {
+        alert("Enter correct Password");
+      } else if (res.data.status === "notexist") {
+        alert("User has not signed up");
+      }
+    } catch (e) {
+      alert("Wrong details");
+      console.log(e);
     }
+  }
+
   return (
     <div className="login-container">
-      <h2 className="login-text">Login</h2>
+      <h3 className="login-text">Login</h3>
       <form action="POST">
-                <label htmlFor="username">Username:</label>
-                <input type="username" onChange={(e) => { setUsername(e.target.value) }} placeholder="Username"  />
-                <br></br>
-                <label htmlFor="password">Password :</label>
-                <input type="password" onChange={(e) => { setPassword(e.target.value) }} placeholder="Password"  />
-                <br></br>
-                <input className="submit-button1" type="submit" onClick={submit} />
+        {/* Username Section */}
+        <div className="form-section">
+          <label htmlFor="username">Username:</label>
+          <br/>
+          <input
+            type="username"
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Username"
+          />
+        </div>
+
+        {/* Password Section */}
+        <div className="form-section">
+          <label htmlFor="password">Password :</label>
+          <br/>
+          <input
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+          />
+        </div>
+
+        <input className="submit-button1" type="submit" onClick={submit} />
       </form>
 
-            <br />
-            <p>Don't have an account?</p>
-            {/* <br /> */}
-            
-            <Link to="/Signup">Signup Page</Link>
+      <br />
+      <p>Don't have an account?</p>
+      <Link to="/Signup">Signup Page</Link>
     </div>
   );
 };
