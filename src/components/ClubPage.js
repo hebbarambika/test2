@@ -21,7 +21,7 @@ const ClubPage = () => {
         <div key={index}>
           <h3>{event.title}</h3>
           <p>{event.description}</p>
-          <p>Date: {event.date}</p>
+          <p>{event.date}</p>
         </div>
       ))}
     </div>
