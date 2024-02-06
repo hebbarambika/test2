@@ -86,22 +86,14 @@ const newSchema = new mongoose.Schema({
       const events = mongoose.model('events', eventSchema);
       
     
-    // // // const clubSchema = new mongoose.Schema({
-    // // //     name: {
-    // // //       type: String,
-    // // //       required: true
-    // // //     },
-    // // //     info: {
-    // // //       type: String,
-    // // //       required: true
-    // // //     },
-    // // //     event: {
-    // // //       type: String,
-    // // //       required: true
-    // // //     },
-    // //   });
+      const clubInfoSchema = new mongoose.Schema({
+        name: { type: String, required: true },
+        goal: { type: String, required: true },
+        imgurl: { type: String, required: true },
+        adminname: { type: String, required: true }
+      });
       
-     
-    //   // const Club = mongoose.model("Club", clubSchema);
+      // Create model for clubinfo collection
+      const clubInfos = mongoose.model('clubInfos', clubInfoSchema);
 
-module.exports={users,admins,events};
+module.exports={users,admins,events,clubInfos};

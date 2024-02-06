@@ -1,18 +1,29 @@
-//ClubPage.js
+// import React from 'react';
+// import ClubInfoSlider from './ClubInfoSlider';
+// import { useClubContext } from './context/ClubContext';
+// import { ClubProvider } from './context/ClubContext';
 import React from 'react';
-import ClubInfoSlider from './ClubInfoSlider';
+import { useClubContext } from '../context/ClubContext';
 
 const ClubPage = () => {
-  const clubInfo = {
-    name: 'Example Club',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    images: ['image1.jpg', 'image2.jpg', 'image3.jpg'],
-  };
+  // const { clubInfo, eventInfo } = useClubContext();
+  const {clubInfo, eventInfo} = useClubContext();
 
   return (
     <div>
-      <h1>Club Information Slider</h1>
-      <ClubInfoSlider clubInfo={clubInfo} />
+      <h1>{clubInfo.name}</h1>
+      <p>{clubInfo.goal}</p>
+      <img src={clubInfo.imgURL} alt={clubInfo.name} />
+      <p>Admin: {clubInfo.adminName}</p>
+
+      <h2>Events</h2>
+      {eventInfo.map((event, index) => (
+        <div key={index}>
+          <h3>{event.title}</h3>
+          <p>{event.description}</p>
+          <p>Date: {event.date}</p>
+        </div>
+      ))}
     </div>
   );
 };

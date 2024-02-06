@@ -1,5 +1,5 @@
 const express = require("express")
-const {users,admins,events} = require("./mongo")
+const {users,admins,events,clubInfos} = require("./mongo")
 //const alloweduser = require("./mongo")
 require('dotenv').configDotenv();
 // dotenv.config();
@@ -182,7 +182,7 @@ app.get('/getevents', async (req, res) => {
         }
     });
     
-    app.get('/viewmembers', async (req, res) => {
+app.get('/viewmembers', async (req, res) => {
         const { club } = req.query; // Get the club from query parameters
         
         try {
@@ -194,6 +194,23 @@ app.get('/getevents', async (req, res) => {
             res.status(500).json({ error: 'Internal Server Error' });
         }
     });
+
+    app.post('/clubpage', async (req, res) => {
+        const { club } = req.body; // Extract the club name from req.body
+        try {
+            // Fetch club data based on the club name
+            const clubinfo = await clubInfos.findOne({ name: club }).exec();
+            // Fetch events data based on the club name
+            const event = await events.find({ club: club }).exec();
+            console.log(clubinfo)
+            res.json({ clubinfo, event });
+        } catch (error) {
+            console.error('Error:', error);
+            res.status(500).json({ error: 'Internal Server Error' });
+        }
+    });
+    
+      
     
     
       
