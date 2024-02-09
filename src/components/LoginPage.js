@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
-import { UserContext } from "../context/UserContext"; // Import the UserContext
+import { useUserContext } from "../context/UserContext"; // Import useUserContext instead of UserContext
 import "../css/LoginPage.css";
 
 const LoginPage = ({ setIsUserLoggedIn }) => {
-	const { login } = useContext(UserContext); // Access the login function from the context
+	const { login } = useUserContext(); // Use useUserContext to access the login function
 	const history = useNavigate();
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
@@ -18,11 +18,10 @@ const LoginPage = ({ setIsUserLoggedIn }) => {
 				username,
 				password,
 			});
-			console.log("res", res);
 
 			if (res.data.status === "match") {
 				setIsUserLoggedIn(true);
-				login(res.data.user); // Store user information in context upon successful login
+				login(res.data.user); // Use the login function from the context
 				alert("Login Successful");
 				history("/", { state: { id: username } });
 			} else if (res.data.status === "doesnotmatch") {
@@ -30,9 +29,19 @@ const LoginPage = ({ setIsUserLoggedIn }) => {
 			} else if (res.data.status === "notexist") {
 				alert("User has not signed up");
 			}
-		} catch (e) {
-			alert(e);
-			console.log(e);
+		} catch (error) {
+			if (error.response) {
+				if (error.response.status === 400) {
+					alert("Enter correct Password");
+				} else if (error.response.status === 404) {
+					alert("User has not signed up");
+				} else {
+					alert("An error occurred. Please try again later.");
+				}
+			} else {
+				alert("An error occurred. Please try again later.");
+			}
+			console.error(error);
 		}
 	}
 
@@ -40,7 +49,6 @@ const LoginPage = ({ setIsUserLoggedIn }) => {
 		<div className='login-container'>
 			<h3 className='login-text'>Login</h3>
 			<form action='POST'>
-				{/* Username Section */}
 				<div className='form-section'>
 					<label htmlFor='username'>Username:</label>
 					<br />
@@ -51,7 +59,6 @@ const LoginPage = ({ setIsUserLoggedIn }) => {
 					/>
 				</div>
 
-				{/* Password Section */}
 				<div className='form-section'>
 					<label htmlFor='password'>Password :</label>
 					<br />

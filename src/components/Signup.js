@@ -3,13 +3,13 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
-import { UserContext } from "../context/UserContext"; // Import the UserContext
+import { UserProvider, useUserContext } from "../context/UserContext";
 import "../css/Signup.css";
 import i2 from "../assets/lavender.jpg";
 
 function Login({ setIsUserLoggedIn }) {
 	const history = useNavigate();
-	const { login } = useContext(UserContext); // Access the login function from the context
+	const { login } = useUserContext();
 	const [userType, setUserType] = useState("ug");
 	const [username, setUsername] = useState("");
 	const [name, setName] = useState("");
@@ -56,6 +56,8 @@ function Login({ setIsUserLoggedIn }) {
 			if (res.data === "exist") {
 				alert("User already exists");
 			} else if (res.data === "notexist") {
+				setIsUserLoggedIn(true);
+				// login(res.data.user);
 				alert("Signup successful");
 				// Use the login function from the context to set the user as logged in
 				login({
