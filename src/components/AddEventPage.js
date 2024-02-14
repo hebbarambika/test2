@@ -214,6 +214,11 @@ function AddEventPage() {
 					Back to Admin
 				</button>
 			</Link>
+			<Link to='/'>
+				<button className='back-button' type='button'>
+					Home
+				</button>
+			</Link>
 		</div>
 	);
 }

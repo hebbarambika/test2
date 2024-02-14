@@ -1,10 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { useClubContext } from "../context/ClubContext";
 import { useUserContext } from "../context/UserContext";
 import axios from "axios";
 
-const ClubPage = () => {
+const ClubPage = ({ isAdminLoggedIn }) => {
   const { clubInfo, eventInfo } = useClubContext();
+  const { user } = useUserContext();
 
   // Filter events based on event type (Inter Club and Intra Club)
   const interClubEvents = eventInfo.filter(
@@ -22,18 +23,18 @@ const ClubPage = () => {
 
       <h2>Inter Club Events</h2>
       {interClubEvents.map((event, index) => (
-        <Event key={index} event={event} />
+        <Event key={index} event={event} isAdminLoggedIn={isAdminLoggedIn} />
       ))}
 
       <h2>Intra Club Events</h2>
       {intraClubEvents.map((event, index) => (
-        <Event key={index} event={event} />
+        <Event key={index} event={event} isAdminLoggedIn={isAdminLoggedIn} />
       ))}
     </div>
   );
 };
 
-const Event = ({ event }) => {
+const Event = ({ event, isAdminLoggedIn }) => {
   const [expanded, setExpanded] = useState(false);
   const [enrolled, setEnrolled] = useState(false);
   const { user } = useUserContext();
@@ -44,6 +45,11 @@ const Event = ({ event }) => {
   };
 
   const handleEnrollClick = async (eventId, eventName, eventType) => {
+    if (isAdminLoggedIn) {
+      alert("Admins cannot participate in these events.");
+      return;
+    }
+
     try {
       if (eventType === "Intra Club Event") {
         // Check if user belongs to the same club
@@ -88,7 +94,7 @@ const Event = ({ event }) => {
         </div>
       )}
       <button onClick={handleMoreClick}>{expanded ? "Less" : "More"}</button>
-      {!enrolled && (
+      {!enrolled && !isAdminLoggedIn && (
         <button
           onClick={() =>
             handleEnrollClick(event._id, event.eventName, event.eventType)

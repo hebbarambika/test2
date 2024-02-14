@@ -16,6 +16,7 @@ const UserProvider = ({ children }) => {
 
 	const logout = () => {
 		setUser(null);
+		
 	};
 
 	return (

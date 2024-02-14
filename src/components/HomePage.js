@@ -1,6 +1,6 @@
 //HomePage.js
 import React, { useState } from "react";
-import { ClubProvider } from "../context/ClubContext";
+// import { ClubProvider } from "../context/ClubContext";
 import { useClubContext } from "../context/ClubContext";
 import "../css/HomePage.css";
 import i1 from "../assets/logo1.png";
@@ -8,11 +8,17 @@ import i2 from "../assets/am.jpeg";
 import "../index.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useUserContext } from "../context/UserContext";
 // import i3 from "../assets/lavender.jpg";
 // import i4 from "../assets/b1.jpg";
 // import i5 from "../assets/b2.jpg"
 
-const HomePage = ({ isUserLoggedIn }) => {
+const HomePage = ({
+	isUserLoggedIn,
+	setIsUserLoggedIn,
+	isAdminLoggedIn,
+	setIsAdminLoggedIn,
+}) => {
 	const collegeName = "Mahatma Gandhi Memorial College, Udupi. ";
 	const collegeInfo =
 		"Accredited by NAAC with 'A+' Grade (CGPA 3.36) in IVCycle of Accreditation";
@@ -20,15 +26,11 @@ const HomePage = ({ isUserLoggedIn }) => {
 	const history = useNavigate();
 	const { setClubInfo, setEventInfo } = useClubContext();
 	const [club, setClub] = useState(""); // State to hold the selected club name
-
-	// Function to handle club link clicks and navigate to the login page
-	// const handleClubClick = () => {
-	//   history("/login")
-	// };
+	const { logout } = useUserContext();
 
 	const handleClubClick = async (clubName) => {
 		setClub(clubName);
-		if (isUserLoggedIn) {
+		if (isUserLoggedIn || isAdminLoggedIn) {
 			try {
 				const response = await axios.post("http://localhost:3000/clubpage", {
 					club: clubName,
@@ -47,8 +49,15 @@ const HomePage = ({ isUserLoggedIn }) => {
 	};
 
 	const handleLoginClick = () => {
-		if (!isUserLoggedIn) {
+		if (!isUserLoggedIn && !isAdminLoggedIn) {
 			history("/login");
+		} else {
+			alert("You are already logged in");
+		}
+	};
+	const handleAdminLoginClick = () => {
+		if (!isUserLoggedIn && !isAdminLoggedIn) {
+			history("/adminlogin");
 		} else {
 			alert("You are already logged in");
 		}
@@ -59,6 +68,13 @@ const HomePage = ({ isUserLoggedIn }) => {
 		} else {
 			alert("You are already logged in");
 		}
+	};
+	const handleLogoutClick = () => {
+		logout();
+
+		history("/");
+		setIsUserLoggedIn(false);
+		setIsAdminLoggedIn(false);
 	};
 
 	return (
@@ -71,31 +87,33 @@ const HomePage = ({ isUserLoggedIn }) => {
 				</div>
 				<img className='l2' src={i2} alt='College Logo' />
 			</div>
-			{/* <div className='auth-buttons'>
-            <button onClick={() => history("/login")}>Login</button>
-            <button onClick={() => history("/Signup")}>Signup</button>
-            <button onClick={() => history("/admin-login")}>Admin Login</button>
-        </div> */}
+
 			<div className='auth-buttons'>
-				<h5>HOME</h5>
-				<div className='button' onClick={handleLoginClick}>
-					<h3>Login</h3>
-				</div>
-				<div className='button' onClick={handleSignupClick}>
-					<h3>SignUp</h3>
-				</div>
-				<div className='button' onClick={() => history("/adminlogin")}>
-					<h3>Admin Login</h3>
-				</div>
+				{(isUserLoggedIn || isAdminLoggedIn) && (
+					<div className='button' onClick={handleLogoutClick}>
+						<h3>Logout</h3>
+					</div>
+				)}
+				{isAdminLoggedIn && <div className='button' onClick={() => history("/admin") }>
+						<h3>AdminPage</h3>
+					</div>}
+				{!isUserLoggedIn && !isAdminLoggedIn && (
+					<>
+						<div className='button' onClick={handleLoginClick}>
+							<h3>Login</h3>
+						</div>
+						<div className='button' onClick={handleSignupClick}>
+							<h3>SignUp</h3>
+						</div>
+						<div className='button' onClick={handleAdminLoginClick}>
+							<h3>Admin Login</h3>
+						</div>
+					</>
+				)}
 			</div>
 			{/* <h1>Hello {location.state.id} and welcome to the home</h1> */}
 			<div className='image-container'>
 				<div className='main-container'>
-					{/* <div className='auth-buttons'>
-            <button onClick={() => history("/login")}>Login</button>
-            <button onClick={() => history("/Signup")}>Signup</button>
-            <button onClick={() => history("/admin-login")}>Admin Login</button>
-        </div> */}
 					<div className='options-container'>
 						{/* <div className='fixed-text'>
               <h3>CLUBS</h3>
