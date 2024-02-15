@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useClubContext } from "../context/ClubContext";
 import { useUserContext } from "../context/UserContext";
 import axios from "axios";
+import "../css/ClubPage.css";
 
 const ClubPage = ({ isAdminLoggedIn }) => {
   const { clubInfo, eventInfo } = useClubContext();

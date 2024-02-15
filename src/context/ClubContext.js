@@ -1,6 +1,7 @@
 // ClubContext.js
 import React, { createContext, useState, useContext } from 'react';
 
+
 const ClubContext = createContext();
 
 export const ClubProvider = ({ children }) => {

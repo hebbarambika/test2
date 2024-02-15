@@ -95,7 +95,7 @@ const HomePage = ({
 					</div>
 				)}
 				{isAdminLoggedIn && <div className='button' onClick={() => history("/admin") }>
-						<h3>AdminPage</h3>
+						<h3>Admin</h3>
 					</div>}
 				{!isUserLoggedIn && !isAdminLoggedIn && (
 					<>
