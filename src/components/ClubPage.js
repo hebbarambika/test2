@@ -107,7 +107,7 @@ const Event = ({ event, isAdminLoggedIn }) => {
 		<div className='event'>
 			<h3 className='event-name'>{event.eventName}</h3>
 			{expanded && (
-				<div className='event-details'>
+				<div className='event-details1'>
 					<p>Date: {event.eventDate}</p>
 					<p>Venue: {event.eventVenue}</p>
 					<p>Time: {event.eventTime}</p>

@@ -3,6 +3,7 @@ import axios from "axios";
 import { useAdminContext } from "../context/AdminContext";
 import { useNavigate, Link } from "react-router-dom";
 import "../css/ViewMembers.css";
+import "../css/AdminPage.css";
 
 const ViewMembers = () => {
 	const { adminInfo } = useAdminContext();
@@ -30,21 +31,20 @@ const ViewMembers = () => {
 	return (
 		<div className='view-members-container'>
 			<h2>View Members</h2>
-						<div className="auth-buttons1">
-					<h1 className="admin-text">View Members</h1>
-					<div className="button-container">
-					<Link to='/admin'>
-							<button className='back-button' type='button'>
-								Back to Admin
-							</button>
-						</Link>
-						<Link to='/'>
-							<button className='back-button' type='button'>
-								Home
-							</button>
-						</Link>
-					</div>
-						</div>
+			<div className="auth-buttons2">
+				<div className="button-container">
+				<Link to='/admin'>
+						<button className='back-button1' type='button'>
+							Back to Admin
+						</button>
+					</Link>
+					<Link to='/'>
+						<button className='back-button' type='button'>
+							Home
+						</button>
+					</Link>
+				</div>
+			</div>
 			<table>
 				<thead>
 					<tr>

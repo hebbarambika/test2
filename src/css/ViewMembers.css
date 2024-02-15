@@ -47,6 +47,33 @@
   tbody tr:hover {
     background-color: #96939350;
   }
+  .back-button1 {
+    background-color: rgb(58, 74, 165);
+    color: white; /* Change button text color to white */
+    padding: 10px 15px;
+    border: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 185px; /* Center align buttons */
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    display: block; /* Ensure buttons are block elements */
+    width: 150px; /* Adjust button width */
+    text-align: center; /* Center align button text */
+  }
+  .auth-buttons2 {
+    /* margin-right: 1pc; */
+    padding: 1pc;
+    display: flex;
+    justify-content: center;
+  
+    margin-top: 0px;
+    color: #f7f1f1;
+    height: 5pc;
+    width: 100;
+    background-color: rgb(9, 3, 90);
+  }
   
   /* Responsive table styles */
   @media screen and (max-width: 600px) {

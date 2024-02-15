@@ -34,7 +34,26 @@ const EventListPage = () => {
 	return (
 		<div className='Event-list-page'>
 			<div className='event-list'>
-				<h2 className='event-list-title'>Event List</h2>
+				{/* <h2 className='event-list-title'>Event List</h2> */}
+			<div className='auth-buttons1'>
+					<h1 className="admin-text">Event List</h1>
+					
+					<div className="button-container">
+						<Link to='/admin'>
+						<button className='back-button' type='button'>
+							Back to Admin
+						</button>
+						</Link>
+						<Link to='/'>
+						<button className='back-button' type='button'>
+							Home
+						</button>
+						</Link>
+					</div>
+			</div>
+
+
+
 				{events.map((eventCategory, index) => (
 					<div key={index} className='event-category'>
 						<h3 className='category-title'>{eventCategory._id}</h3>
@@ -70,16 +89,6 @@ const EventListPage = () => {
 					{/* Close button to hide details */}
 				</div>
 			)}
-			<Link to='/admin'>
-				<button className='back-button' type='button'>
-					Back to Admin
-				</button>
-			</Link>
-			<Link to='/'>
-				<button className='back-button' type='button'>
-					Home
-				</button>
-			</Link>
 			
 		</div>
 	);
