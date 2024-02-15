@@ -9,6 +9,13 @@ import Button from "./Button";
 const AdminPage = ({isUserLoggedIn,setIsUserLoggedIn,isAdminLoggedIn,setIsAdminLoggedIn}) => {
 	return (
 		<div>
+			{/* <header className="admin-header">
+				<h1>Admin</h1>
+				<Button isUserLoggedIn={isUserLoggedIn}
+							setIsUserLoggedIn={setIsUserLoggedIn}
+							isAdminLoggedIn={isAdminLoggedIn}
+							setIsAdminLoggedIn={setIsAdminLoggedIn} />
+			</header> */}
 			<div>
 			<Button isUserLoggedIn={isUserLoggedIn}
 							setIsUserLoggedIn={setIsUserLoggedIn}

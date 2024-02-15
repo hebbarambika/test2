@@ -1,17 +1,4 @@
 /* AdminPage.css */
-.auth-buttons1 {
-	padding: 1pc;
-	display: flex;
-	justify-content: flex-end;
-
-	margin-top: 100px;
-	color: #f7f1f1;
-	height: 3pc;
-	width: 100;
-	background-color: rgb(9, 3, 90);
-	/* margin-bottom: 20px; */
-	/* position: fixed; */
-}
 
 .admin-container {
 	display: flex;
@@ -20,21 +7,55 @@
 	margin: 20px;
 }
 
+/* AdminPage.css */
+
+.admin-text {
+	color: #fff; /* Set the text color */
+	margin-right: auto; /* Push the admin text to the left */
+	text-align: center; /* Align the admin text to the center */
+	margin-bottom: 20px; /* Add space below the admin text */
+}
+.button-container {
+	display: flex;
+	justify-content: center; /* Align buttons to the center */
+	padding-top: 1.5pc;
+}
+
+.auth-buttons1 {
+	padding: 1pc;
+	display: flex;
+	justify-content: flex-end;
+
+	margin-top: 0px;
+	color: #f7f1f1;
+	height: 5pc;
+	width: 100;
+	background-color: rgb(9, 3, 90);
+}
+
 .box {
-	width: 200px;
+	width: 180px;
 	height: 150px;
-	background-color: #25a4ca;
+	background-color: #25a3caa4;
 	border: 1px solid #ccc;
 	border-radius: 8px;
-	margin: 10px;
+	margin: 100px;
 	padding: 20px;
 	text-align: center;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	transition: transform 0.3s ease-in-out;
+	transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out,
+		box-shadow 0.3s ease-in-out;
 }
 
 .box:hover {
 	transform: scale(1.05);
+	background-color: rgba(
+		255,
+		255,
+		255,
+		0.822
+	); /* Change background color on hover */
+	box-shadow: 0 0 15px rgb(0, 0, 0); /* Add a slight shadow effect on hover */
 }
 
 .arrow-container {

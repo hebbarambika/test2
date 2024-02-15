@@ -1,31 +1,100 @@
-/* EventList.css */
-.event-columns {
+/* Container for the entire Event List page */
+
+
+/* Container for the Event List page */
+.event-list-title{
+  color:white;
+}
+.Event-list-page {
   display: flex;
+  margin-left: 50px;
+  
+  justify-content: space-between;
+}
+.event-category{
+  
+  color: white;
 }
 
-.event-column {
+/* Container for inter-club events */
+.inter-club-events {
   flex: 1;
-  margin: 0 10px;
+  color: black;
+  text-decoration: #0056b3;
+  background-color: #fff;
+  margin-right: 20px; /* Add margin to create space between the boxes */
 }
 
-.column-title {
-  font-size: 20px;
+/* Container for intra-club events */
+.intra-club-events {
+  color: white;
+  background-color:white;
+  flex: 1;
+}
+
+/* Title for each box */
+.box-title {
+  font-size: 24px; /* Increase font size */
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 20px; /* Add more space below title */
+  color: #faf7f7; /* Change title color */
 }
 
+/* Styles for each event item */
 .event-item {
   list-style: none;
-  margin-bottom: 5px;
+  color: black;
+  margin-bottom: 10px; /* Adjust margin */
+  padding: 10px; /* Add padding */
+  background-color: #fff; /* Add background color */
+  border-radius: 8px; /* Add border radius */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow */
 }
 
+/* Button for showing more details */
 .more-button {
   margin-left: 10px;
   cursor: pointer;
+  background-color: #007bff; /* Button background color */
+  color: #fff; /* Button text color */
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px; /* Add padding */
+  font-size: 16px; /* Increase font size */
+  transition: background-color 0.3s ease; /* Add transition */
 }
 
+.more-button:hover {
+  background-color: #0056b3; /* Button background color on hover */
+}
+
+/* Container for event details */
+/* Container for event details */
 .event-details {
-  margin-top: 20px;
+  background-color: #f9f9f9; /* Background color */
+  border: 1px solid #ccc; /* Border */
+  border-radius: 8px; /* Border radius */
+  padding: 20px; /* Padding */
+  margin-top: 20px; /* Margin to create space */
+  margin-right: 200px;
+
+}
+
+/* Style for the close button */
+.event-details button {
+  margin-top: 10px; /* Add margin */
+  cursor: pointer;
+  background-color: #007bff; /* Button background color */
+  color: #fff; /* Button text color */
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px; /* Add padding */
+  font-size: 16px; /* Font size */
+  transition: background-color 0.3s ease; /* Transition */
+}
+
+.event-details button:hover {
+  background-color: #0056b3; /* Button background color on hover */
 }
 
 /* Add any other styles you need */

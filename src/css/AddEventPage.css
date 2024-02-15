@@ -1,58 +1,83 @@
+/* AddEventPage.css */
 
- /* body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f2f2f2;
-    margin: 0;
-  }*/
-  
-  .addevent-text {
-    text-align: center;
-    color: #333;
-  } 
-  
-  .addevent-container {
-    max-width: 600px;
-    margin: 0 auto;
-  
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    margin-top: 20px;
-    align-items: center;
-  }
-  
-  .lbl {
-    display: block;
-    margin-bottom: 10px;
-  }
-  
-  .input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-  }
-  
-  .textarea {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-  }
-  
-  .submit-button3 {
-    background-color: rgb(6, 21, 105);
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-   
+.addevent-text {
+  text-align: center;
+  color: white; /* Change text color to white */
 }
-  
-  button:hover {
-    background-color: #2980b9;
-  }
-   
+.addevent-form{
+  align-items: center;
+  margin-left: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  /* background-color: chartreuse; */
+  width: 30pc;
+}
+.form-content{
+  margin-left: 30px;
+ 
+  margin-top: 10px;
+  margin-bottom: 20px;
+
+}
+
+.addevent-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 0 100px;
+  background-color: #c1dce756;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.lbl {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.input,
+.textarea {
+  width: 100%; /* Adjust input and textarea width */
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+/* .submit-button3, */
+.back-button {
+  background-color: rgb(58, 74, 165);
+  color: white; /* Change button text color to white */
+  padding: 10px 15px;
+  border: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 185px; /* Center align buttons */
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  display: block; /* Ensure buttons are block elements */
+  width: 150px; /* Adjust button width */
+  text-align: center; /* Center align button text */
+}
+.submit-button3{
+  background-color: rgb(58, 74, 165);
+  color: white; /* Change button text color to white */
+  padding: 10px 15px;
+  border: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 145px; /* Center align buttons */
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  display: block; /* Ensure buttons are block elements */
+  width: 150px; /* Adjust button width */
+  text-align: center; /* Center align button text */
+}
+
+.submit-button3:hover,
+.back-button:hover {
+  background-color: #2980b9;
+}
